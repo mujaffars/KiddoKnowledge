@@ -1,4 +1,3 @@
-// components/Navbar.js
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -6,7 +5,7 @@ const Navbar = () => {
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white font-bold text-lg">
-          <Link href="/">SmartStart Academy</Link>
+          <Link href="/">Kiddo Knowledge</Link>
         </div>
         <div className="space-x-4">
           <Link href="/" className="text-white hover:text-gray-300">Home</Link>

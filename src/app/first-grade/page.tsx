@@ -1,5 +1,5 @@
-import Quiz from '../components/Quiz';
-import { questions } from '../data/questions';
+import Quiz from '../../components/quiz';
+import { questions } from '../../data/questions';
 
 const FirstGradeQuiz = () => {
   return <Quiz questions={questions.firstGrade} grade="1st Grade" />;

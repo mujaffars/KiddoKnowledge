@@ -1,0 +1,69 @@
+/* src/components/Quiz.css */
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+.quiz-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question-container {
+  margin-bottom: 20px;
+}
+
+.question {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Adjust as needed */
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.option input[type="radio"] {
+  margin-right: 10px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Quiz.css or Quiz.module.css */
+
+.quiz-container.show-answers .question.correct-answer {
+  background-color: lightgreen;
+}
+.text-green {
+  color: green;
+}

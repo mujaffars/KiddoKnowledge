@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  @apply max-w-xl mx-auto p-4;
+}
+
+h1, h2 {
+  @apply text-center text-2xl my-4;
+}
+
+div {
+  @apply my-2;
+}
+
+button {
+  @apply bg-blue-500 text-white px-4 py-2 mt-4 rounded;
+}

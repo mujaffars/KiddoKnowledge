@@ -12,8 +12,9 @@ const getRandomQuestions = (questions, numQuestions) => {
 const Quiz = ({ questions, grade }) => {
   const totalQuestions = 10;
   const [randomQuestions, setRandomQuestions] = useState([]);
-  const [answers, setAnswers] = useState(new Array(questions.length).fill('')); // Array to hold user answers
-  const [showAnswer, setShowAnswer] = useState(false); // State to control answer display
+  const [answers, setAnswers] = useState(new Array(totalQuestions).fill('')); // Array to hold user answers
+
+  const [showAnswer, setShowAnswer] = useState(true); // State to control answer display
   const [totalScore, setTotalScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -22,17 +23,27 @@ const Quiz = ({ questions, grade }) => {
   }, [questions]);
 
   const handleAnswer = (index, selectedAnswer) => {
-    const correctAnswer = questions[index].answer;
+    const correctAnswer = randomQuestions[index].answer;
     const isCorrect = selectedAnswer === correctAnswer;
 
-    const newAnswers = [...answers];
-    newAnswers[index] = { answer: selectedAnswer, isCorrect }; // Store both answer and correctness info
-    setAnswers(newAnswers);
+    setAnswers((prevAnswers) => {
+      const newAnswers = [...prevAnswers];
+      newAnswers[index] = { answer: selectedAnswer, isCorrect }; // Store both answer and correctness info
+      return newAnswers;
+    });
 
-    handleSubmit();
   };
 
   const handleSubmit = () => {
+    // Check if any question remains unanswered
+    const anyUnanswered = answers.some((answer) => answer === '');
+    if (anyUnanswered) {
+      // Handle case where not all questions are answered
+      alert('Please answer all questions before submitting.');
+      return;
+    }
+
+    console.log(answers)
     let score = 0;
     answers.forEach((answer) => {
       if (answer && answer.isCorrect) {
@@ -53,9 +64,9 @@ const Quiz = ({ questions, grade }) => {
     <div className={`quiz-container ${showAnswer ? 'show-answers' : ''}`}>
       <h2 className="quiz-title">{grade} Quiz</h2>
       <div className="question-container">
-        {questions.map((question, index) => (
+        {randomQuestions.map((question, index) => (
           <div key={index} className={`question ${answers[index]?.isCorrect ? 'correct-answer' : ''}`}>
-            <p className="question-text">{question.question}</p>
+            <p className="question-text">{eval(index + 1) + ") " + question.question}</p>
             <div className="options-container">
               {question.options.map((option, optionIndex) => (
                 <div key={optionIndex} className="option">
@@ -87,7 +98,7 @@ const Quiz = ({ questions, grade }) => {
         <div className="modal">
           <div className="modal-content">
             <h2>Quiz Results</h2>
-            <p>Your score: {totalScore}/{questions.length}</p>
+            <p>Your score: {totalScore}/{randomQuestions.length}</p>
             <button onClick={closeModal} className="close-button">Close</button>
           </div>
         </div>

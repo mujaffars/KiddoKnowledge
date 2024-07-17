@@ -1,13 +1,25 @@
 // src/components/Quiz.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './quiz.css';
 
+const getRandomQuestions = (questions, numQuestions) => {
+  const shuffled = questions.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, numQuestions);
+};
+
 const Quiz = ({ questions, grade }) => {
+  const totalQuestions = 10;
+  const [randomQuestions, setRandomQuestions] = useState([]);
   const [answers, setAnswers] = useState(new Array(questions.length).fill('')); // Array to hold user answers
   const [showAnswer, setShowAnswer] = useState(false); // State to control answer display
   const [totalScore, setTotalScore] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setRandomQuestions(getRandomQuestions(questions, totalQuestions));
+  }, [questions]);
 
   const handleAnswer = (index, selectedAnswer) => {
     const correctAnswer = questions[index].answer;
@@ -16,6 +28,8 @@ const Quiz = ({ questions, grade }) => {
     const newAnswers = [...answers];
     newAnswers[index] = { answer: selectedAnswer, isCorrect }; // Store both answer and correctness info
     setAnswers(newAnswers);
+
+    handleSubmit();
   };
 
   const handleSubmit = () => {
@@ -25,8 +39,14 @@ const Quiz = ({ questions, grade }) => {
         score++;
       }
     });
+    console.log(score)
     setTotalScore(score);
     setShowAnswer(true); // Show answers after submission
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false); // Close the modal
   };
 
   return (
@@ -45,6 +65,7 @@ const Quiz = ({ questions, grade }) => {
                       name={`question-${index}`}
                       value={option}
                       onChange={() => handleAnswer(index, option)}
+                      disabled={answers[index] ? true : false}
                     />
                     <span className={`option-text ${answers[index]?.isCorrect ? 'correct-answer' : answers[index] ? 'wrong-answer' : ''}`}>
                       {option}
@@ -61,6 +82,17 @@ const Quiz = ({ questions, grade }) => {
           </div>
         ))}
       </div>
+
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Quiz Results</h2>
+            <p>Your score: {totalScore}/{questions.length}</p>
+            <button onClick={closeModal} className="close-button">Close</button>
+          </div>
+        </div>
+      )}
+
       <button onClick={handleSubmit} className="submit-button">
         Submit
       </button>

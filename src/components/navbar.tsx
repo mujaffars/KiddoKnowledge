@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import ProgressBar from './ProgressBar';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +11,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blue-500 p-4">
+    <>
+    <ProgressBar />
+    <nav className="bg-yellow-500 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white font-bold text-lg">
           <Link href="/">Kiddo Knowledge</Link>
@@ -38,6 +41,7 @@ const Navbar = () => {
         </div>
       )}
     </nav>
+    </>
   );
 };
 

@@ -17,3 +17,43 @@ div {
 button {
   @apply bg-blue-500 text-white px-4 py-2 mt-4 rounded;
 }
+
+/* src/styles/layout.css */
+
+/* Existing class */
+.bg-blue-500 {
+  background-color: #3b82f6; /* Blue */
+}
+
+/* New classes */
+.bg-red-500 {
+  background-color: #ef4444; /* Red */
+}
+
+.bg-green-500 {
+  background-color: #10b981; /* Green */
+}
+
+.bg-yellow-500 {
+  background-color: #f59e0b; /* Yellow */
+}
+
+.bg-indigo-500 {
+  background-color: #6366f1; /* Indigo */
+}
+
+.bg-purple-500 {
+  background-color: #8b5cf6; /* Purple */
+}
+
+.bg-pink-500 {
+  background-color: #ec4899; /* Pink */
+}
+
+.bg-teal-500 {
+  background-color: #14b8a6; /* Teal */
+}
+
+.bg-gray-500 {
+  background-color: #6b7280; /* Gray */
+}

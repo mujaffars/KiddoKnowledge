@@ -46,6 +46,17 @@ export const questions = {
   ],
   firstGrade: [
     {
+      question: 'Which of the following is obtained from a living thing??',
+      options: [
+        { text: 'Bicycle', image: '/images/bicycle.jpeg' },
+        { text: 'Honey', image: '/images/honey.jpg' },
+        { text: 'Plastic cup', image: '/images/plastic_cup.jpg' },
+        { text: 'Television', image: '/images/television.jpeg' }
+      ],
+      answer: 'Honey',
+      image: '/images/honey.jpg',
+    },
+    {
       "question": "What is 24 + 18?",
       "options": ["32", "42", "44", "38"],
       "answer": "42"

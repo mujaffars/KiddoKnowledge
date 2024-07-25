@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import './quiz.css';
 
 const getRandomQuestions = (questions, numQuestions) => {
-  const shuffled = questions.sort(() => 0.5 - Math.random());
+  // const shuffled = questions.sort(() => 0.5 - Math.random());
+  const shuffled = questions;
   return shuffled.slice(0, numQuestions);
 };
 
@@ -74,6 +75,20 @@ const Quiz = ({ questions, grade }) => {
                     <input
                       type="radio"
                       name={`question-${index}`}
+                      value={typeof option === 'string' ? option : option.text}
+                      onChange={() => handleAnswer(index, typeof option === 'string' ? option : option.text)}
+                      disabled={answers[index] ? true : false}
+                    />
+                    <span className={`option-text ${answers[index]?.isCorrect ? 'correct-answer' : answers[index] ? 'wrong-answer' : ''}`}>
+                      {typeof option === 'string' ? option : option.text}
+                      {typeof option !== 'string' && option.image && <img src={option.image} alt={`Option ${optionIndex + 1}`} className="option-image" />}
+                    </span>
+                  </label>
+
+                  {/* <label>
+                    <input
+                      type="radio"
+                      name={`question-${index}`}
                       value={option}
                       onChange={() => handleAnswer(index, option)}
                       disabled={answers[index] ? true : false}
@@ -81,7 +96,7 @@ const Quiz = ({ questions, grade }) => {
                     <span className={`option-text ${answers[index]?.isCorrect ? 'correct-answer' : answers[index] ? 'wrong-answer' : ''}`}>
                       {option}
                     </span>
-                  </label>
+                  </label> */}
                 </div>
               ))}
             </div>

@@ -71,7 +71,13 @@ const Quiz = ({ questions, grade }) => {
             <div className="options-container">
               {question.options.map((option, optionIndex) => (
                 <div key={optionIndex} className="option">
-                  <label>
+                  <label className={`option-label ${
+                    (answers[index] &&
+                      !answers[index].isCorrect &&
+                      (typeof option === 'string' ? option : option.text) === question.answer)
+                      ? 'correct-answer-label'
+                      : ''
+                  }`}>
                     <input
                       type="radio"
                       name={`question-${index}`}

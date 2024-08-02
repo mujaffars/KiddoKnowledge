@@ -48,13 +48,13 @@ export const questions = {
     {
       question: 'Which of the following is obtained from a living thing??',
       options: [
-        { text: 'Bicycle', image: '/images/bicycle.jpeg' },
-        { text: 'Honey', image: '/images/honey.jpg' },
-        { text: 'Plastic cup', image: '/images/plastic_cup.jpg' },
-        { text: 'Television', image: '/images/television.jpeg' }
+        { text: 'Bicycle', image: '/images/bicycle.png' },
+        { text: 'Honey', image: '/images/honey.png' },
+        { text: 'Plastic cup', image: '/images/plastic_cup.png' },
+        { text: 'Television', image: '/images/television.png' }
       ],
       answer: 'Honey',
-      image: '/images/honey.jpg',
+      image: '/images/honey.png',
     },
     {
       "question": "What is 24 + 18?",

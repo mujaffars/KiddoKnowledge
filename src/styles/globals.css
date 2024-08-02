@@ -57,3 +57,17 @@ button {
 .bg-gray-500 {
   background-color: #6b7280; /* Gray */
 }
+
+.option-text img{
+  width: 75%;
+}
+
+.options-container .option{
+  
+}
+
+.correct-answer-label{
+  background-color: #a4f9a4;
+  border-radius: 5%;
+  padding: 4%;
+}

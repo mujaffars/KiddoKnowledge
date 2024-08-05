@@ -66,7 +66,13 @@ const Quiz = ({ questions, grade }) => {
       <h2 className="quiz-title">{grade} Quiz</h2>
       <div className="question-container">
         {randomQuestions.map((question, index) => (
-          <div key={index} className={`question ${answers[index]?.isCorrect ? 'correct-answer' : ''}`}>
+          <div key={index} className={`question ${
+            answers[index]
+              ? answers[index].isCorrect
+                ? 'correct-answer'
+                : 'div-wrong-answer'
+              : ''
+          }`}>
             <p className="question-text">{eval(index + 1) + ") " + question.question}</p>
             <div className="options-container">
               {question.options.map((option, optionIndex) => (
